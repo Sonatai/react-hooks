@@ -13,6 +13,7 @@ function useLocalStorageState(
 ) {
   const [state, setState] = React.useState(() => {
     const valueInLocalStorage = window.localStorage.getItem(key)
+
     if (valueInLocalStorage) {
       // the try/catch is here in case the localStorage value was set before
       // we had the serialization in place (like we do in previous extra credits)
@@ -22,6 +23,7 @@ function useLocalStorageState(
         window.localStorage.removeItem(key)
       }
     }
+
     return typeof defaultValue === 'function' ? defaultValue() : defaultValue
   })
 
